@@ -15,28 +15,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate links.md
+      - name: Generate links.csv
         shell: bash
         run: |
           REPO="${{ github.repository }}"
           BRANCH="${{ github.ref_name }}"
-          OUT="links.md"
+          OUT="links.csv"
 
-          echo "| Path | CDN URL |" > "$OUT"
-          echo "|------|---------|" >> "$OUT"
+          echo "Folder,CDN URL" > "$OUT"
 
           find . -type f \
             ! -path "./.git/*" \
             ! -path "./.github/*" \
-            ! -name "links.md" \
+            ! -name "links.csv" \
             | sed 's|^\./||' | sort | while read FILE
           do
+            FOLDER=$(dirname "$FILE")/
             URL="https://cdn.jsdelivr.net/gh/${REPO}@${BRANCH}/${FILE}"
-            echo "| ${FILE} | ${URL} |" >> "$OUT"
+            echo "\"${FOLDER}\",\"${URL}\"" >> "$OUT"
           done
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto update links.md"
-          file_pattern: links.md
+          commit_message: "Auto update links.csv"
+          file_pattern: links.csv
