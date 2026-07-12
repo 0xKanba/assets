@@ -1,0 +1,42 @@
+name: Generate CDN Links
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate links.md
+        shell: bash
+        run: |
+          REPO="${{ github.repository }}"
+          BRANCH="${{ github.ref_name }}"
+          OUT="links.md"
+
+          echo "| Path | CDN URL |" > "$OUT"
+          echo "|------|---------|" >> "$OUT"
+
+          find . -type f \
+            ! -path "./.git/*" \
+            ! -path "./.github/*" \
+            ! -name "links.md" \
+            | sed 's|^\./||' | sort | while read FILE
+          do
+            URL="https://cdn.jsdelivr.net/gh/${REPO}@${BRANCH}/${FILE}"
+            echo "| ${FILE} | ${URL} |" >> "$OUT"
+          done
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto update links.md"
+          file_pattern: links.md
