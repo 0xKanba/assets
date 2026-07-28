@@ -1,5 +1,12 @@
 Folder,CDN URL
 "hl/favicon/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/hl/favicon/.c"
+"hl/favicon/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/hl/favicon/apple-touch-icon.png"
+"hl/favicon/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/hl/favicon/favicon-96x96.png"
+"hl/favicon/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/hl/favicon/favicon.ico"
+"hl/favicon/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/hl/favicon/favicon.svg"
+"hl/favicon/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/hl/favicon/site.webmanifest"
+"hl/favicon/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/hl/favicon/web-app-manifest-192x192.png"
+"hl/favicon/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/hl/favicon/web-app-manifest-512x512.png"
 "i/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/i/w1.png"
 "i/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/i/w2.png"
 "i/","https://cdn.jsdelivr.net/gh/0xKanba/assets@master/i/w3.png"
